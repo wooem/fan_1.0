@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferramenta de Apoio à Negociação (FAN)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+    <div class="logo">
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/ZhG8Vgr/Logo-uni-o-BC-laranja-e-azul-removebg-preview.png" alt="Logo" width="200" height="200"></a>
+    </div>
+        <h1>Ferramenta de Apoio a Negociação (FAN)</h1>
+        <ul>
+            <li><button onclick="toggleCalculator('calculadoraMargem')">Calculadora de Margem</button></li>
+            <li><button onclick="toggleCalculator('calculadoraMarkup')">Calculadora de Markup</button></li>
+            <li><button onclick="toggleCalculator('calculadoraTTCDesejado')">Calculadora de TTC Desejado</button></li>
+            <li><button onclick="toggleCalculator('calculadoraHectolitragem')">Calculadora de Hectolitragem</button></li>
+            <li><button onclick="toggleCalculator('calculadoraQuantidadedeCaixa')">Calculadora de Quantidade de Caixa</button></li>
+            <li><button onclick="toggleCalculator('calculadoraRotaEfetiva')">Calculadora de Rota Efetiva</button></li>
+        </ul>
+
+        <hr>
+
+       <!-- Seção da Calculadora de Margem -->
+<section id="calculadoraMargem" class="calculadora hidden">
+    <h2>Calculadora de Margem</h2>
+    <div class="input-group">
+        <label for="precoCompra">TTV (Preço de Compra Unitário):</label>
+        <input type="number" id="precoCompra" placeholder="TTV">
+    </div>
+    <div class="input-group">
+        <label for="precoVendaUnitario">TTC (Preço de Venda Unitário):</label>
+        <input type="number" id="precoVendaUnitario" placeholder="TTC">
+    </div>
+    <div class="input-group">
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" placeholder="Quantidade">
+    </div>
+    <button onclick="calcularMargem()">Calcular Margem</button>
+    <div class="result-box">
+        <h3>Resultados Margem</h3>
+        <div class="result" id="resultMargemAbs"></div>
+        <div class="result" id="resultMargemPercentual"></div>
+        <div class="result" id="resultLucroBrutoTotal"></div>
+    </div>
+</section>
+        <hr>
+        <!-- Calculadora de Markup -->
+        <section id="calculadoraMarkup" class="calculadora hidden">
+            <h2>Calculadora de Markup</h2>
+            <div class="input-group">
+                <label for="precoVendaUnitarioMarkup">TTV (Preço de Compra Unitário):</label>
+                <input type="number" id="precoVendaUnitarioMarkup" placeholder="TTV">
+            </div>
+            <div class="input-group">
+                <label for="ttc">TTC (Preço de Venda Unitário):</label>
+                <input type="number" id="ttc" placeholder="TTC">
+            </div>
+            <button onclick="calcularMarkup()">Calcular Markup</button>
+            <div class="result-box">
+                <h3>Resultado Markup</h3>
+                <div class="result" id="resultMarkup"></div>
+            </div>
+        </section>
+        <!-- Calculadora de TTC Desejado -->
+        <section id="calculadoraTTCDesejado" class="calculadora hidden">
+            <h2>Calculadora de TTC Desejado</h2>
+            <div class="input-group">
+                <label for="precoVendaUnitarioMarkup">TTV (Preço de Compra Unitário):</label>
+                <input type="number" id="precoVendaUnitarioMarkup" placeholder="TTV">
+            </div>
+            <div class="input-group">
+                <label for="markupTTC">Markup (%) para TTC Desejado:</label>
+                <input type="number" id="markupTTC" placeholder="Markup (%)">
+            </div>
+            <button onclick="calcularTTCDesejado()">Calcular TTC Desejado</button>
+            <div class="result-box">
+                <h3>Resultado TTC Desejado</h3>
+                <div class="result" id="resultTTCDesejado"></div>
+            </div>
+        </section>
+        <!-- Calculadora de Hectolitragem -->
+        <section id="calculadoraHectolitragem" class="calculadora hidden">
+            <h2>Conversor de Hectolitragem</h2>
+            <div class="input-group">
+                <label for="litros">Mililitros por Unidade (mL):</label>
+                <input type="number" id="litros">
+            </div>
+            <div class="input-group">
+                <label for="unidadesPorCaixa">Unidades por Caixa:</label>
+                <input type="number" id="unidadesPorCaixa">
+            </div>
+            <div class="input-group">
+                <label for="caixas">Quantidade de Caixas:</label>
+                <input type="number" id="caixas">
+            </div>
+            <button onclick="converterParaHectolitros()">Converter para Hectolitros</button>
+            <div class="result-box">
+                <h3>Resultado</h3>
+                <div class="result" id="resultadoHectolitros"></div>
+            </div>
+        </section>
+            <hr>
+            <!-- Adicionando a seção para o cálculo de caixas -->
+            <section id="calculadoraQuantidadedeCaixa" class="calculadora hidden">
+                <h2>Conversor de Hectolitros para Quantidade de Caixas</h2>
+                <div class="input-group">
+                    <label for="hectolitros">Hectolitros (hL):</label>
+                    <input type="number" id="hectolitros">
+                </div>
+                <div class="input-group">
+                    <label for="mlunidade">Mililitros por Unidade (mL):</label>
+                    <input type="number" id="mlunidade">
+                </div>
+                <div class="input-group">
+                    <label for="unidadesPorCaixaReverse">Unidades por Caixa:</label>
+                    <input type="number" id="unidadesPorCaixaReverse">
+                </div>
+                <button onclick="calcularQuantidadeCaixas()">Converter para Caixas</button>
+                <div class="result-box">
+                    <h3>Resultado</h3>
+                    <div class="result" id="resultCaixas"></div>
+                </div>
+            </section>
+
+            <section id="calculadoraRotaEfetiva" class="calculadora hidden">
+                <h2>Calculadora de Rota Efetiva</h2>
+                <form id="calcForm">
+                    <label for="rePercentage">Porcentagem de RE desejada (%):</label>
+                    <input type="number" id="rePercentage" required><br><br>
+                    
+                    <label for="segment">Segmento:</label>
+                    <select id="segment">
+                        <option value="cluster1">Frio / FER / TRAD</option>
+                        <option value="cluster2">Sub / Top Volume / Noturno</option>
+                        <option value="cluster3">Vip / LC</option>
+                        <option value="cluster4">ASrota / Hiperseg</option>
+                        <option value="cluster5">Sup Contas / RNC</option>
+                    </select><br><br>
+                    
+                    <label for="isWeekday">Dia da semana ou sábado?</label>
+                    <select id="isWeekday">
+                        <option value="true">Dia da semana</option>
+                        <option value="false">Sábado</option>
+                    </select><br><br>
+                    
+                    <label for="totalVisits">Quantidade total de visitas:</label>
+                    <input type="number" id="totalVisits" required><br><br>
+                    
+                    <label for="minRotaVisits">Quantidade de PDVs com Rota Mínima (opcional):</label>
+                    <input type="number" id="minRotaVisits"><br><br>
+                    
+                    <button type="button" onclick="calculateRE()">Calcular</button>
+                </form>
+    
+                <div id="result">
+
+            </section>
+               
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>

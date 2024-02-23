@@ -1,0 +1,132 @@
+body {
+  font-family: 'Roboto', sans-serif; /* Definindo a fonte Roboto como a fonte principal */
+  text-align: center;
+  margin: 20px;
+  background-color: #01002f;
+}
+
+
+.container {
+  max-width: 80%; /* Ajuste de largura máxima para responsividade */
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+  background-color: white; /* Adicionado fundo branco para a caixa */
+  border-radius: 10px; /* Adicionado borda arredondada para a caixa */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adicionado sombra */
+  
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  color: #fff; /* Altere para a cor desejada, por exemplo, branco */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #01002f;
+  padding: 20px;
+}
+
+
+.logo {
+  margin-bottom: 10px;
+}
+
+.logo img {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container h1 {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #01002f;
+  color: white;
+  border: 2px solid white; /* Adiciona a borda branca */
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adiciona a sombra */
+}
+
+ul li button:hover {
+  background-color: #033e8e;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ajusta a sombra quando hover */
+}
+
+.calculadora {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: none; /* Inicialmente escondido */
+}
+
+.calculadora label {
+  display: block;
+  margin-top: 10px;
+}
+
+.calculadora input {
+  width: 100%; /* Ocupar a largura total */
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.calculadora button {
+  width: 100%; /* Ocupar a largura total */
+  padding: 10px;
+  font-size: 16px;
+  background-color: #033e8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calculadora button:hover {
+  background-color: #033e8e;
+}
+
+.result-box {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Estilo para telas menores, como smartphones */
+@media (max-width: 600px) {
+  ul li button {
+    width: 100%; /* Ocupar a largura total */
+  }
+
+  .calculadora input {
+    width: 100%; /* Ocupar a largura total */
+  }
+
+  .calculadora button {
+    width: 100%; /* Ocupar a largura total */
+  }
+}
+
+
+.calculadora.visible {
+  display: block;
+}
+
+
